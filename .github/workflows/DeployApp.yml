@@ -112,7 +112,7 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-  F32prod_preval:
+F32prod_preval:
     runs-on: ubuntu-latest
     environment: F32Prod_approval
     steps:
@@ -123,6 +123,98 @@ jobs:
             echo "Manually approved"
       - name: Run a one-line script
         run: echo Hello, Mike. This is the F32prod_preval!
+
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+  F32prod_stage:
+    runs-on: ubuntu-latest
+    needs: F32prod_preval
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo Hello, Mike! This is the F32prod_stage job
+
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+  F32prod_rbprep:
+    runs-on: ubuntu-latest
+    needs: F32prod_stage
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo Hello, Mike! This is the F32prod_rbprep job
+
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+  F32prod_audit:
+    runs-on: ubuntu-latest
+    needs: F32prod_rbprep
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo Hello, Mike! This is the F32prod_audit job
+
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+  F32prod_deploy:
+    runs-on: ubuntu-latest
+    needs: F32prod_audit
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo Hello, Mike! This is the F32prod_deploy deployment job
+
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+  F32prod_hc:
+    runs-on: ubuntu-latest
+    needs: F32prod_deploy
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo Hello, Mike! This is the F32prod_hc job
+
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+  F32prod_rb:
+    runs-on: ubuntu-latest
+    environment: F32prod_RB_approval
+    needs: F32prod_rbprep
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo Hello, Mike! This is the F32prod_rb job - only run on failure
+
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+  F32prod_notify:
+    runs-on: ubuntu-latest
+    needs: F32prod_deploy
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo Hello, Mike! This is the F32prod_notify job
 
       - name: Run a multi-line script
         run: |
