@@ -19,4 +19,4 @@ jobs:
       - uses: actions/checkout@v3
       - name: manual approve
         run: |
-            echo "Manually approved to run on ${{ github.events.inputs.targetenv }} "
+            echo "Manually approved to run on ${{ github.event.inputs.targetenv }} "
