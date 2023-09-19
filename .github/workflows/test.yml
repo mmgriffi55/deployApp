@@ -3,7 +3,7 @@ name: Test_app
 on:
   workflow_dispatch:
    inputs:
-    environment:
+    targetenv:
      type: choice
      description : select the environment
      options:
@@ -19,4 +19,4 @@ jobs:
       - uses: actions/checkout@v3
       - name: manual approve
         run: |
-            echo "Manually approved to run on ${{ github.events.environment }} "
+            echo "Manually approved to run on ${{ github.events.inputs.targetenv }} "
