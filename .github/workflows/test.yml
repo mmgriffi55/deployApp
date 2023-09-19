@@ -20,3 +20,4 @@ jobs:
       - name: manual approve
         run: |
             echo "Manually approved to run on ${{ github.event.inputs.targetenv }} "
+            echo " the MES300 URL for this repo is ${{ vars.MES300URL }} "
