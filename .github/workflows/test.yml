@@ -2,15 +2,15 @@ name: Test_app
 # this is a comment
 on:
   workflow_dispatch:
-  inputs:
-   environment:
-    type: choice
-    description : select the environment
-    options:
-     D1staging
-     D1prod
-     vfint
-     vfprod
+   inputs:
+    environment:
+     type: choice
+     description : select the environment
+     options:
+      - D1staging
+      - D1prod
+      - vfint
+      - vfprod
   
 jobs:
   Windows:
