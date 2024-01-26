@@ -23,4 +23,4 @@ jobs:
      - name: List the envirionment server
        run : |
            echo "inputs"
-           echo " this is the server "${{ env.SERVER }}"
+           echo " this is the server ${{ env.SERVER }}"
