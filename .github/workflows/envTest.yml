@@ -8,7 +8,7 @@ on:
         options:
           - 'rf3dev'
           - 'rf3stg'
-          - 'rf4prod'
+          - 'rf3prod'
       parentChg:
         description: Parent release change number (eg, CHG0123456)
         required: false
