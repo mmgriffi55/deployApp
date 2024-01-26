@@ -13,6 +13,7 @@ on:
         required: false
 env:
    MY_SERVER: ${{ vars.SERVER}}
+   SITE : ${{ github.event.intputs.site }}
 jobs: 
    test1:
     runs-on: [windows-latest]
@@ -23,4 +24,6 @@ jobs:
      - name: List the envirionment server
        run : |
            echo "inputs"
-           echo " this is the server ${{ env.SERVER }}"
+           echo "running this on ${{ github.event.inputs.site }}"
+           echo " this is the server from the env ${{ env.MY_SERVER }}"
+           echo " reference it directly ${{ vars.SERVER }}"
