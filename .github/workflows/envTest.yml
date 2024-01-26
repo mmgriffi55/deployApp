@@ -1,0 +1,26 @@
+name: testEnv
+on: 
+  workflow_dispatch:
+    inputs:
+      site:
+        type: choice
+        description: The site you are deploying
+        options:
+          - 'rf3dev'
+          - 'rf3stg'
+      parentChg:
+        description: Parent release change number (eg, CHG0123456)
+        required: false
+env:
+   MY_SERVER: ${{ vars.SERVER}}
+jobs: 
+   test1:
+    runs-on: [windows-latest]
+    environment: ${{ github.event.inputs.site }}
+    steps: 
+     - name: Checkout Custom Package Repo
+       uses: actions/checkout@v3 
+     - name: List the envirionment server
+       run : |
+           echo "inputs"
+           echo " this is the server "${{ env.SERVER }}"
